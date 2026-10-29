@@ -2,6 +2,18 @@
 
 **Simple meal planning and healthy habit tracking for everyday life.**
 
+
+<h2 align="center">📱 App Demo</h2>
+
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ha-phuong112009/nutri-share-app/main/demo.gif"
+    alt="NutriShare App Demo"
+    width="300"
+  />
+</p>
+
+
 NutriShare is a mobile application designed to help people build healthier eating habits without requiring advanced nutrition knowledge. It focuses on practical meal suggestions, easy-to-understand health indicators, and lightweight daily tracking.
 
 Built with **React Native (Expo)** and **Supabase**, NutriShare is intended for beginners, young adults, and busy individuals who want a more structured approach to everyday nutrition.
