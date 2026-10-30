@@ -1,143 +1,160 @@
-# Nutri Share
+# 🥗 NutriShare
 
-Ứng dụng theo dõi dinh dưỡng và sức khỏe trên React Native (Expo). Người dùng đăng ký, ghi nhật ký ăn uống, nước, cân nặng, tập luyện và giấc ngủ, xem bài viết sức khỏe, nhận thông báo và trò chuyện với trợ lý AI.
+**Simple meal planning and healthy habit tracking for everyday life.**
 
-Tên hiển thị: **Nutri Share** (`NutriShare` trong `app.json`). Package: `com.nutri.share`.
 
----
+<h2 align="center">📱 App Demo</h2>
 
-## Tính năng
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ha-phuong112009/nutri-share-app/main/demo.gif"
+    alt="NutriShare App Demo"
+    width="300"
+  />
+</p>
 
-- Đăng ký, đăng nhập email, quên mật khẩu và thiết lập hồ sơ (chiều cao, cân nặng, mục tiêu).
-- Trang chủ theo ngày: calo, tiến độ, nước uống và chỉ số sức khỏe.
-- Ghi bữa ăn (sáng, trưa, tối, ăn nhẹ), tập luyện và giấc ngủ.
-- Bài viết sức khỏe và lưu bài viết.
-- Thông báo realtime.
-- Chat sức khỏe dùng Google Gemini.
-- Ảnh đại diện lưu trên Supabase Storage.
 
----
+NutriShare is a mobile application designed to help people build healthier eating habits without requiring advanced nutrition knowledge. It focuses on practical meal suggestions, easy-to-understand health indicators, and lightweight daily tracking.
 
-## Công nghệ
+Built with **React Native (Expo)** and **Supabase**, NutriShare is intended for beginners, young adults, and busy individuals who want a more structured approach to everyday nutrition.
 
-| Thành phần | Công nghệ |
-|------------|-----------|
-| App | React Native, Expo SDK 53, Expo Router, TypeScript |
-| Giao diện | NativeWind (Tailwind) |
-| Dữ liệu client | React Query, Zustand, Redux Toolkit |
-| Form | React Hook Form, Zod |
-| Backend | Supabase (Auth, PostgreSQL, Realtime, Storage) |
-| Chat | Google Gemini (`@google/generative-ai`) |
+> **Project status:** In development. The features below describe the planned MVP scope and may not all be available yet.
+>
+> **Health disclaimer:** NutriShare provides general wellness information and estimates only. It is not a medical device and does not replace advice from qualified healthcare professionals.
 
----
+## 🎯 The Problem
 
-## Yêu cầu
+Building a consistent eating routine can be difficult, especially for people who are new to nutrition or exercise. Common challenges include:
 
-| Công cụ | Ghi chú |
-|---------|---------|
-| Node.js 18 hoặc 20 LTS | Kèm npm 9 trở lên |
-| Git | Clone mã nguồn |
-| Tài khoản Supabase | [supabase.com](https://supabase.com) |
-| Expo Go | Mở bản dev bằng QR (tùy chọn) |
-| Xcode | Chỉ khi chạy `npm run ios` trên Mac |
-| Android Studio | Chỉ khi chạy `npm run android` |
+- Uncertainty about what to eat based on personal characteristics and activity levels.
+- Difficulty planning simple, balanced meals throughout the week.
+- Lack of practical tools for maintaining consistent eating and hydration habits.
+- Limited time to research nutrition or prepare complex meal plans.
 
----
+**NutriShare's goal** is to make everyday nutrition planning more approachable, actionable, and sustainable.
 
-## Cài đặt
+## ✨ Planned MVP Features
+
+### 1. Personal Profile & Health Indicators
+
+- Record basic information: age, sex, height, weight, and activity level.
+- View **Body Mass Index (BMI)** and an **estimated daily energy requirement**.
+- Understand results through a clear, beginner-friendly interface.
+
+*These calculations are approximate and are not intended for medical assessment.*
+
+### 2. Meal Suggestions & Planning
+
+- Browse sample **daily and weekly meal plans**.
+- Explore meal plans organized around general goals, such as:
+  - Healthy eating.
+  - Weight maintenance.
+  - Gradual weight loss.
+- Discover simple dishes made with accessible ingredients.
+- Choose practical meal ideas suited to busy schedules.
+
+*The MVP provides general suggestions rather than clinical or highly personalized nutrition plans.*
+
+### 3. Health & Nutrition Knowledge Library
+
+- Read concise articles about healthy eating principles.
+- Learn practical habits that support everyday well-being.
+- Browse educational content by topic for easy discovery.
+
+### 4. Habit & Progress Tracking
+
+- Log meals at a basic level.
+- Record weight changes over time.
+- Track everyday habits, including water intake and regular meal times.
+- Review history and simple progress charts.
+
+### 5. Content Administration
+
+A lightweight administration interface is planned to support:
+
+- Managing educational articles.
+- Creating and updating sample meal plans.
+- Viewing limited user-related information needed for basic operations, subject to appropriate access controls.
+
+The administration scope is intentionally minimal for the MVP.
+
+## 🛠 Tech Stack
+
+| Technology | Purpose |
+| --- | --- |
+| [React Native](https://reactnative.dev/) | Cross-platform mobile application development |
+| [Expo](https://expo.dev/) | React Native development tooling and app runtime |
+| [Supabase](https://supabase.com/) | Backend services and data persistence |
+| [PostgreSQL](https://www.postgresql.org/) | Relational database provided through Supabase |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) and npm.
+- [Expo Go](https://expo.dev/go) on a compatible device, or an Android/iOS simulator.
+- A [Supabase](https://supabase.com/) project configured for this application.
+
+### 1. Install dependencies
+
+From the project root, run:
 
 ```bash
-git clone <url-repo> nutri-share
-cd nutri-share
 npm install
 ```
 
----
+### 2. Configure environment variables
 
-## Cấu hình môi trường
+Create a `.env` file in the project root:
 
-Copy file mẫu rồi điền key của project Supabase mới:
+```dotenv
+EXPO_PUBLIC_SUPABASE_URL=your_supabase_project_url
+EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+```
+
+Get these values from your Supabase project's dashboard. The application must be configured to read the same environment variable names.
+
+> **Security:** `EXPO_PUBLIC_` variables are embedded in the client application. Never put Supabase **secret** or **service-role** keys in these variables. Use appropriate PostgreSQL **Row Level Security (RLS)** policies to protect user data.
+
+### 3. Start the development server
 
 ```bash
-cp .env.example .env
+npx expo start
 ```
 
-```env
-EXPO_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
-EXPO_PUBLIC_SUPABASE_ANON_KEY=your_anon_public_key_here
-EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_key
-```
+Follow the terminal instructions to open the app with Expo Go or a supported simulator.
 
-- **Project URL** và **anon key**: Supabase Dashboard → Project Settings → API. Chỉ dùng anon key trên client, không đưa `service_role` vào app.
-- **Gemini**: lấy tại [Google AI Studio](https://aistudio.google.com/apikey). Cần key này để dùng chat sức khỏe.
+> **Note:** Running the app also requires the Supabase schema, access policies, and any other project-specific configuration used by the implementation. Those details should be documented as development progresses.
 
-Client Supabase hiện đọc URL và anon key trong `src/lib/supabase.ts`. Khi đổi sang project mới, cập nhật hai giá trị đó cho khớp `.env`, rồi khởi động lại Expo (`npx expo start -c` nếu env không áp dụng).
+## 🔒 Privacy & Responsible Use
 
-Không commit file `.env`.
+NutriShare is designed around simple wellness tracking. Because profile and activity information can be sensitive, the implementation should:
+
+- Restrict access to personal records with appropriate authentication and authorization.
+- Enforce Supabase Row Level Security policies for user-owned data.
+- Limit administrative access to the minimum data required.
+- Avoid presenting estimated calorie needs or BMI as medical diagnoses.
+- Provide clear explanations of how user data is used and stored.
+
+## 🗺️ Development Roadmap
+
+- [ ] Personal profile and BMI / daily energy estimates.
+- [ ] Daily and weekly sample meal plans.
+- [ ] Categorized nutrition and wellness articles.
+- [ ] Meal, weight, hydration, and routine tracking.
+- [ ] Simple history and progress visualization.
+- [ ] Basic content administration.
+- [ ] Usability testing and MVP refinement.
+
+*This checklist represents the intended scope, not a verified implementation status. Update it as features are completed.*
+
+## 📚 References
+
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo environment variables](https://docs.expo.dev/guides/environment-variables/)
+- [Supabase with Expo React Native](https://supabase.com/docs/guides/getting-started/quickstarts/expo-react-native)
+- [Supabase documentation](https://supabase.com/docs)
 
 ---
 
-## Setup Supabase
-
-Tạo project trên Supabase, bật **Email** trong Authentication → Providers. Muốn đăng ký xong dùng ngay trên môi trường dev thì tắt **Confirm email**.
-
-Mở **SQL Editor** và chạy từng file trong `supabase/` theo thứ tự. Hướng dẫn chi tiết, lỗi thường gặp và checklist nằm ở [`supabase/HUONG_DAN_SETUP.md`](supabase/HUONG_DAN_SETUP.md).
-
-| # | File | Việc nó làm |
-|---|------|-------------|
-| 1 | `schema.sql` | Schema gốc cho project trống. Bỏ dòng `alter table auth.users enable row level security` nếu báo `must be owner of table users` |
-| 2 | `grant_table_permissions.sql` | Cấp quyền bảng, tránh lỗi `42501` |
-| 3 | `add_exercise_sleep_tables.sql` | Tập luyện và giấc ngủ |
-| 4 | `add_meal_type_column.sql` | Cột `meal_type` trên `meal_logs` |
-| 5 | `notifications_schema.sql` | Thông báo |
-| 6 | `add_notification_triggers.sql` | Trigger thông báo |
-
-Sau bước 6, chạy một lần:
-
-```sql
-DROP TRIGGER IF EXISTS create_notification_settings_trigger ON public.profiles;
-```
-
-| # | File |
-|---|------|
-| 7 | `enable_realtime_notifications.sql` |
-| 8 | `fix_meal_logs_policy.sql` |
-| 9 | `create_profiles_storage_bucket.sql` |
-| 10 | `storage_policies.sql` |
-| 11 | `meals_data.sql` |
-| 12 | `seed_articles_simple.sql` |
-
-`setup_steps.sql` dùng khi cần xóa và tạo lại bảng cơ bản (có `DROP TABLE`). Không chạy song song với `schema.sql` trên cùng một database đã có dữ liệu.
-
----
-
-## Chạy ứng dụng
-
-```bash
-npm start
-```
-
-- Expo Go: quét QR.
-- Simulator: nhấn `i` (iOS) hoặc `a` (Android).
-
-```bash
-npm run ios
-npm run android
-npm run web
-```
-
-Sau khi chạy, đăng ký một tài khoản rồi kiểm tra trên Supabase: **Authentication → Users** có user mới, **Table Editor → `profiles`** có một dòng cùng `id`.
-
----
-
-## Lỗi thường gặp
-
-| Triệu chứng | Cách xử lý |
-|-------------|------------|
-| `must be owner of table users` khi chạy `schema.sql` | Bỏ dòng `alter table auth.users ...` rồi chạy phần còn lại |
-| `permission denied` / `42501` | Chạy `grant_table_permissions.sql` và đảm bảo đã đăng nhập |
-| Không có dòng `profiles` sau đăng ký | Xem Database → Logs, trigger `on_auth_user_created` |
-| Upload avatar `Bucket not found` | Chạy `create_profiles_storage_bucket.sql` rồi `storage_policies.sql` |
-| Không xóa được meal log | Chạy `fix_meal_logs_policy.sql` |
-| Thông báo realtime không tới | Chạy `enable_realtime_notifications.sql` |
-| App vẫn nối project Supabase cũ | Sửa URL và anon key trong `src/lib/supabase.ts`, rồi `npx expo start -c` |
+**NutriShare — Small steps toward healthier everyday habits.**
